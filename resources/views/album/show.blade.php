@@ -12,11 +12,12 @@
 </head>
 <body>
 <div class="wrapper">
-{{--    @dd($album)--}}
-    <div class="top album-back album-back-{{ $album[0]->theme }} ">
+{{--    @dd($album[0]->user->theme)--}}
+    <div class="top album-back album-back-@if(Arr::exists($album, 'user')){{ $album[0]->user->theme }}@else beige @endif ">
         <div class="center">
             <x-header></x-header>
-            @foreach($album[0]->photos as $photo)
+            @forelse($album as $photo)
+{{--                @dd($photo->user->theme)--}}
             <div class="card align">
                 <div class="card-main">
                     <div class="align">
@@ -28,17 +29,17 @@
                         </div>
                     </div>
                     <div class="card-block">
-                        <div class="card-background card-background-{{ $album[0]->theme }}"></div>
+                        <div class="card-background card-background-{{ $photo->user->theme }}"></div>
                         <div class="card-sticker align">
-                            01.05.2023
-                            <div class="card-sticker-background card-sticker-background-{{ $album[0]->theme }}"></div>
+                            {{ Str::limit($photo->created_at, 10) }}
+                            <div class="card-sticker-background card-sticker-background-{{ $photo->user->theme }}"></div>
                         </div>
                         <div class="card-image">
                             <img src="{{ $photo->url }}" alt="">
                         </div>
                     </div>
                 </div>
-                <div class="card-desc card-desc-{{ $album[0]->theme }}">
+                <div class="card-desc card-desc-{{ $photo->user->theme }}">
                     {{ $photo->desc }}
                     <div class="card-desc-stick card-desc-stick1"></div>
                     <div class="card-desc-stick card-desc-stick2"></div>
@@ -48,8 +49,34 @@
                 </div>
 
             </div>
+            @empty
+                <div class="card align">
+                    <div class="card-main">
+                        <div class="align">
+                            <div class="card-note">
+                                Хымммм... <br>
+                                Фото скоро вклеются, ожидайте!
+                                <div class="card-note-stick card-note-stick1"></div>
+                                <div class="card-note-stick card-note-stick2"></div>
+                                <div class="card-note-background"></div>
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <div class="card-background card-background-beige"></div>
+                            <div class="card-sticker align">
+                                быть может...
+                                <div class="card-sticker-background card-sticker-background-beige"></div>
+                            </div>
+                            <div class="card-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            @endforeach
+            @endforelse
+            <div class="navigation">
+                {{ $album->links() }}
+            </div>
         </div>
 
     </div>

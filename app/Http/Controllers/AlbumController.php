@@ -16,4 +16,10 @@ class AlbumController extends Controller
         $album = $albumQueryBuilders->getPhotosByUserId($id);
         return \view('album.show', ['album' => $album]);
     }
+
+    public function index(AlbumQueryBuilders $albumQueryBuilders): View
+    {
+        $album = $albumQueryBuilders->getAlbumWithUser();
+        return \view('album.index', ['album' => $album]);
+    }
 }

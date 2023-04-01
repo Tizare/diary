@@ -12,7 +12,7 @@ class Photo extends Model
 
     protected $table = 'photos';
 
-    protected $quarded = [
+    protected $guarded = [
         'id',
     ];
 
@@ -20,4 +20,9 @@ class Photo extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $dateFormat = 'datetime:d-m-Y';
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
 }

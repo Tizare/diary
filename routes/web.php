@@ -34,9 +34,8 @@ Route::get('/diary/{diary}/album/{album}',
 Route::get('/diary/{id}', [DiaryController::class, 'show'])->name('diary');
 Route::get('/album/{id}', [AlbumController::class, 'show'])->name('album');
 
-Route::get('/album', function () {
-    return view('album.index');
-});
+Route::get('/album', [AlbumController::class, 'index']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
