@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Photo;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +24,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/diary/{$id}', [DiaryController::class, 'show'])->name('diary.show');
+//Route::get('/diary/{diary}', function (User $user) {
+//    return $user;
+//});
+Route::get('/diary/{diary}/album/{album}',
+    function (User $user, Photo $photo) {
+    return $photo;
+    });
+Route::get('/diary/{id}', [DiaryController::class, 'show'])->name('diary');
+Route::get('/album/{id}', [AlbumController::class, 'show'])->name('album');
+
 Route::get('/album', function () {
     return view('album.index');
 });

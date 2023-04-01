@@ -144,7 +144,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/OpenServer/OSPanel/domains/repo-porto",
+    "last_opened_file_path": "E:/OpenServer/OSPanel/domains/diary",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -176,7 +176,8 @@
       <option name="presentableId" value="Default" />
       <updated>1680142634065</updated>
       <workItem from="1680142636344" duration="8485000" />
-      <workItem from="1680315064777" duration="9712000" />
+      <workItem from="1680315064777" duration="9763000" />
+      <workItem from="1680343752527" duration="8877000" />
     </task>
     <servers />
   </component>

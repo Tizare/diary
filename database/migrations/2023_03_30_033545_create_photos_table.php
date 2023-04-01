@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users');
             $table->string('url');
             $table->string('title')->nullable();
-            $table->string('desc')->nullable();
+            $table->text('desc')->nullable();
             $table->enum('position', ['vertical', 'horizontal'])
                 ->default('vertical');
             $table->timestamps();

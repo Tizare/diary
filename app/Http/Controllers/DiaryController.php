@@ -13,7 +13,7 @@ class DiaryController extends Controller
      */
     public function show(int $id, DiaryQueryBuilders $diaryQueryBuilders): View
     {
-        $posts = $diaryQueryBuilders->getUserById($id);
-        return \view('diary.show', ['posts' => $posts]);
+        $diary = $diaryQueryBuilders->getUserById($id);
+        return \view('diary.show', ['diary' => $diary]);
     }
 }

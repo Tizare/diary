@@ -8,8 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
-
-final class DiaryQueryBuilders extends QueryBuilder
+final class AlbumQueryBuilders extends QueryBuilder
 {
     public Builder $model;
 
@@ -23,8 +22,8 @@ final class DiaryQueryBuilders extends QueryBuilder
         return $this->model->get();
     }
 
-    function getUserById($id): Collection
+    function getPhotosByUserId($id): Collection
     {
-        return $this->model->with('posts')->where('users.id', $id)->get();
+        return $this->model->with('photos')->where('users.id', $id)->get();
     }
 }

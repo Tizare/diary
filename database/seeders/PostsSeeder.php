@@ -20,7 +20,7 @@ class PostsSeeder extends Seeder
         $data = [];
         for ($i = 0; $i < 5; $i++) {
             $data[] = [
-                'user_id' => '1',
+                'user_id' => '3',
                 'title' => \fake()->jobTitle(),
                 'description' => \fake()->text(100),
                 'text' => \fake()->text(400),
