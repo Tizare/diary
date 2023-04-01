@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DiaryController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/diary/{$id}', [DiaryController::class, 'show'])->name('diary.show');
+Route::get('/album', function () {
+    return view('album.index');
 });
 
 Route::get('/dashboard', function () {
