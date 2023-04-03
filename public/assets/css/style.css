@@ -97,7 +97,8 @@ header {
     min-height: 200px;
     background-image: url(../img/back.png);
     background-position: center;
-    background-size: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -192,6 +193,57 @@ header {
     background-repeat: no-repeat;
     background-size: 20%;
     background-position: bottom left;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.block-card-bottom {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.block-card-bottom-pink {
+    border-top: 1px dashed pink;
+}
+
+.block-card-bottom-blue {
+    border-top: 1px dashed #4cbdf1;
+}
+
+.block-card-bottom-beige {
+    border-top: 1px dashed antiquewhite;
+}
+
+.block-card-bottom-param {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.block-card-bottom-info {
+    padding: 0 10px;
+    font-size: 13px;
 }
 
 .pink {

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('health')->nullable();
             $table->string('mood')->nullable();
             $table->tinyInteger('kg')->nullable();
-            $table->tinyInteger('gr')->nullable();
-            $table->tinyInteger('ht')->unsigned()->nullable();
+            $table->smallInteger('gr')->nullable();
+            $table->smallInteger('ht')->unsigned()->nullable();
             $table->tinyInteger('year')->nullable();
             $table->tinyInteger('month')->nullable();
             $table->enum('theme', Theme::all())->default('beige');

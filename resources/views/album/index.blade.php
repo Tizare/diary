@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="wrapper">
-        @dd($album)
+{{--        @dd($album)--}}
     <div class="top album-back album-back-{{ $album[0]->theme }} ">
         <div class="center">
             <x-header></x-header>
