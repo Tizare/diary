@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class="wrapper">
-{{--    @dd($album[0]->user->theme)--}}
-    <div class="top album-back album-back-@if(Arr::exists($album, 'user')){{ $album[0]->user->theme }}@else beige @endif ">
+{{--    @dd($album[0])--}}
+    <div class="top album-back album-back-@if($album[0]){{ $album[0]->user->theme }}@else beige @endif ">
         <div class="center">
             <x-header></x-header>
             @forelse($album as $photo)
