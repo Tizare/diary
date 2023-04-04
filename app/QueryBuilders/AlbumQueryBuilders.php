@@ -29,8 +29,8 @@ final class AlbumQueryBuilders extends QueryBuilder
         return $this->model->with('user')->where('user_id', $id)->paginate(1);
     }
 
-    function getAlbumWithUser(): LengthAwarePaginator
-    {
-        return $this->model->with('user')->paginate(1);
-    }
+//    function getAlbumWithUser(): LengthAwarePaginator
+//    {
+//        return $this->model->with('user')->paginate(1);
+//    }
 }

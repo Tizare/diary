@@ -144,7 +144,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/OpenServer/OSPanel/domains/laravel",
+    "last_opened_file_path": "E:/OpenServer/OSPanel/domains/portfolio-laravel",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -180,7 +180,8 @@
       <workItem from="1680343752527" duration="14123000" />
       <workItem from="1680409247958" duration="598000" />
       <workItem from="1680426160899" duration="89000" />
-      <workItem from="1680487089805" duration="4654000" />
+      <workItem from="1680487089805" duration="6307000" />
+      <workItem from="1680568619233" duration="7205000" />
     </task>
     <servers />
   </component>

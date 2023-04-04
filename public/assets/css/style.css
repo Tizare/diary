@@ -79,6 +79,22 @@ p, li, a {
     align-items: center;
 }
 
+.edit {
+    background-image: url("../img/edit.png");
+    position: absolute;
+    bottom: 33px;
+    right: 33px;
+    width: 28px;
+    height: 28px;
+    background-size: cover;
+}
+
+.edit a {
+    display: block;
+    width: 28px;
+    height: 28px;
+}
+
 header {
     display: -webkit-box;
     display: -ms-flexbox;

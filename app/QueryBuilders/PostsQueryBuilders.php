@@ -49,6 +49,6 @@ final class PostsQueryBuilders extends QueryBuilder
      */
     public function getPostsByUserId (int $id, int $quantity = 20): LengthAwarePaginator
     {
-        return $this->model->with('users')->where("users_id", $id)->paginate($quantity);
+        return $this->model->with('user')->where("users_id", $id)->paginate($quantity);
     }
 }

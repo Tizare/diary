@@ -34,6 +34,9 @@ Route::get('/diary/{diary}/album/{album}',
 Route::get('/diary/{id}', [DiaryController::class, 'show'])->name('diary');
 Route::get('/album/{id}', [AlbumController::class, 'show'])->name('album');
 
+Route::get('/post/{id}', [PostsController::class, 'edit'])->name('post.edit');
+Route::put('/post/update', [PostsController::class, 'update'])->name('post.update');
+
 Route::get('/album', [AlbumController::class, 'index']);
 
 

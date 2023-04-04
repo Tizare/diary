@@ -1,29 +1,32 @@
 @extends('layouts.main')
 @section('content')
     <main>
+{{--        @dd($user[0]->name)--}}
         <section class="about">
             <div class="about-photo">
                 <img src="{{ asset('assets\img\avatar.jpg') }}" alt="">
             </div>
             <div class="about-info">
-                <h1>{{ $diary[0]->name }} {{ $diary[0]->surname }}</h1>
-                @if($diary[0]->city)<p>{{ $diary[0]->city }}</p>@endif
-                @if($diary[0]->age)<p>30 лет</p>@endif
-                <div class="about-status"> @if($diary[0]->waiting)"в ожидании чуда"
+                <h1>{{ $user[0]->name }} {{ $user[0]->surname }}</h1>
+                @if($user[0]->city)<p>{{ $user[0]->city }}</p>@endif
+                @if($user[0]->age)<p>30 лет</p>@endif
+                <div class="about-status"> @if($user[0]->waiting)"в ожидании чуда"
                     @else"чудо появилось на свет"@endif</div>
-                <a href="{{ route('album', ['id' => $diary[0]->id]) }}" class="post-button">открыть альбом</a>
+                <a href="{{ route('album', ['id' => $user[0]->id]) }}" class="post-button">открыть альбом</a>
             </div>
 
         </section>
 
         <section class="post align">
-
+            @if(Auth::user() && Auth::user()->id == $user[0]->id)
             <div class="post-create">
                 <a href="" class="post-button">создать новый пост</a>
                 <a href="" class="post-button">вклеить фото</a>
             </div>
+            @endif
             <div class="post-posts">
-                   @forelse($diary[0]->posts as $post)
+                   @forelse($diary as $post)
+{{--                       @dd($post)--}}
                     <div class="block">
                         <div class="block-bant block-bant-{{ $post->theme }}">
                         </div>
@@ -57,6 +60,9 @@
                                             @endif
                                         @endif
                                     </div>
+                                    @if(Auth::user() && Auth::user()->id == $user[0]->id)
+                                    <div class="edit"><a href="{{ route('post.edit', ['id' => $post->id]) }}"></a></div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -69,6 +75,9 @@
                         </div>
                     </div>
                     @endforelse
+            </div>
+            <div class="navigation">
+                {{ $diary->links() }}
             </div>
         </section>
     </main>
