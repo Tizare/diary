@@ -151,7 +151,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "php.override.implement.member.chooser.php.doc": "NONE",
-    "settings.editor.selected.configurable": "watcher.settings",
+    "settings.editor.selected.configurable": "editing.templates",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -183,7 +183,7 @@
       <workItem from="1680487089805" duration="6307000" />
       <workItem from="1680568619233" duration="7826000" />
       <workItem from="1680577073070" duration="281000" />
-      <workItem from="1680652878324" duration="6152000" />
+      <workItem from="1680652878324" duration="7982000" />
     </task>
     <servers />
   </component>
