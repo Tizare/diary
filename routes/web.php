@@ -24,18 +24,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/diary/{diary}', function (User $user) {
-//    return $user;
-//});
-Route::get('/diary/{diary}/album/{album}',
-    function (User $user, Photo $photo) {
-    return $photo;
-    });
 Route::get('/diary/{id}', [DiaryController::class, 'show'])->name('diary');
 Route::get('/album/{id}', [AlbumController::class, 'show'])->name('album');
 
-Route::get('/post/{id}', [PostsController::class, 'edit'])->name('post.edit');
-Route::put('/post/update', [PostsController::class, 'update'])->name('post.update');
+Route::resource('diary.posts', PostsController::class)->middleware(['auth', 'verified'])->shallow()->names([
+    'edit' => 'posts.edit',
+    'update' => 'posts.update',
+    'create' => 'posts.create',
+    'store' => 'posts.store',
+]);
 
 Route::get('/album', [AlbumController::class, 'index']);
 

@@ -20,7 +20,7 @@
         <section class="post align">
             @if(Auth::user() && Auth::user()->id == $user[0]->id)
             <div class="post-create">
-                <a href="" class="post-button">создать новый пост</a>
+                <a href="{{ route('posts.create', ['diary' => $user[0]->id]) }}" class="post-button">создать новый пост</a>
                 <a href="" class="post-button">вклеить фото</a>
             </div>
             @endif
@@ -61,7 +61,7 @@
                                         @endif
                                     </div>
                                     @if(Auth::user() && Auth::user()->id == $user[0]->id)
-                                    <div class="edit"><a href="{{ route('post.edit', ['id' => $post->id]) }}"></a></div>
+                                    <div class="edit"><a href="{{ route('posts.edit', ['post' => $post->id]) }}"></a></div>
                                     @endif
                                 </div>
                             </div>

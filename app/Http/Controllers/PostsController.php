@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Theme;
+use App\Http\Requests\Posts\CreateRequest;
 use App\Http\Requests\Posts\EditRequest;
 use App\Models\Post;
+use App\Models\User;
 use App\QueryBuilders\PostsQueryBuilders;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -23,17 +26,25 @@ class PostsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(User $user): View
     {
-        //
+        $themes = Theme::all();
+        return \view('post.create', ['themes' => $themes, 'user' => $user]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request, User $user): RedirectResponse
     {
-        //
+        $post = new Post($request->validated());
+        $post["user_id"] = $user->id;
+
+        if ($post->save()) {
+            return \redirect()->route('diary', ['id' => $post->user_id])->with('success');
+        }
+
+        return \back()->with('error', 'создать пост не получилось');
     }
 
     /**
@@ -47,9 +58,8 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(int $id, PostsQueryBuilders $postsQueryBuilders): View
+    public function edit(Post $post): View
     {
-        $post = $postsQueryBuilders->getPostById($id);
         return \view('post.edit', ['post' => $post]);
     }
 
@@ -61,7 +71,7 @@ class PostsController extends Controller
         $post = $post->fill($request->validated());
 
         if($post->save()) {
-            return \back()->with('success');
+            return \redirect()->route('diary', ['id' => $post->user_id])->with('success');
         }
 
         return \back()->with('error', 'не получилось');

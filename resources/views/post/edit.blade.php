@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
   правка поста-та-та-та!
-  <form method='post' action="{{ route('post.update', ['post'=> $post]) }}" enctype="multipart/form-data">
+  <form method='post' action="{{ route('posts.update', ['post'=> $post]) }}" enctype="multipart/form-data">
       @csrf
       @method('put')
 {{--      <div class="form-group">--}}
@@ -24,15 +24,15 @@
 {{--      </div>--}}
       <div class="form-group">
           <label for="text">Новость</label>
-          <textarea id="text" name="text" class="form-control"> {!! $post[0]->text !!} </textarea>
+          <textarea id="text" name="text" class="form-control"> {!! $post->text !!} </textarea>
       </div>
       <div class="form-group">
           <label for="kg">Килограмм</label>
-          <textarea id="kg" name="kg" class="form-control">{!! $post[0]->kg !!} </textarea>
+          <textarea id="kg" name="kg" class="form-control">{!! $post->kg !!} </textarea>
       </div>
       <div class="form-group">
           <label for="gr">Грамм</label>
-          <textarea id="gr" name="gr" class="form-control">{!! $post[0]->gr !!} </textarea>
+          <textarea id="gr" name="gr" class="form-control">{!! $post->gr !!} </textarea>
       </div>
 
       <br>
