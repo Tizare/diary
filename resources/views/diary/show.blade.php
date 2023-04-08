@@ -1,18 +1,23 @@
 @extends('layouts.main')
 @section('content')
     <main>
-{{--        @dd($user[0]->name)--}}
         <section class="about">
             <div class="about-photo">
                 <img src="{{ asset('assets\img\avatar.jpg') }}" alt="">
             </div>
             <div class="about-info">
                 <h1>{{ $user[0]->name }} {{ $user[0]->surname }}</h1>
-                @if($user[0]->city)<p>{{ $user[0]->city }}</p>@endif
-                @if($user[0]->age)<p>30 лет</p>@endif
                 <div class="about-status"> @if($user[0]->waiting)"в ожидании чуда"
                     @else"чудо появилось на свет"@endif</div>
-                <a href="{{ route('album', ['id' => $user[0]->id]) }}" class="post-button">открыть альбом</a>
+                @if($user[0]->city)<p>{{ $user[0]->city }}</p>@endif
+                @if($user[0]->age)<p>{{$user[0]->age}}
+                    @if(substr($user[0]->age, -1) == 1) год
+                    @elseif(substr($user[0]->age, -1) > 1 && substr($user[0]->age, -1) < 5) года
+                    @else лет</p>@endif
+                @endif
+                @if($user[0]->about)<p class="about-about">{{$user[0]->about}}</p>@endif
+
+                <div class="about-album-button"><a href="{{ route('album', ['id' => $user[0]->id]) }}" class="post-button">открыть альбом</a></div>
             </div>
 
         </section>

@@ -111,27 +111,47 @@ header {
 
 .about {
     min-height: 200px;
-    background-image: url(../img/back.png);
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     padding: 60px 60px;
+    justify-content: space-around;
 }
 
 .about-photo {
-    width: 30%;
-    max-width: 300px;
-    margin-right: 30px;
+    max-width: 200px;
 }
 
 .about-photo img {
-    width: 100%;
-    max-width: 150px;
+    max-width: 200px;
+    padding: 15px;
+    border: 4px dashed pink;
+    border-radius: 10px;
+}
+
+.about-info {
+    padding: 0px 10px;
+}
+
+.about-info h1 {
+    border-bottom: 4px dashed pink;
+    margin-bottom: 8px;
+}
+
+.about-status {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-about {
+    margin-top: 8px;
+}
+
+.about-album-button {
+    display: flex;
+    justify-content: center;
 }
 
 .post {
@@ -147,6 +167,7 @@ header {
 
 .post-create {
     margin: 20px;
+    margin-top: 0px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
