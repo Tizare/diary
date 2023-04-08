@@ -14,14 +14,6 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(int $id, PostsQueryBuilders $postsQueryBuilders): View
-    {
-        $posts = $postsQueryBuilders->getPostsByUserId($id);
-        return \view('diary.index', ['posts' => $posts]);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -60,7 +52,8 @@ class PostsController extends Controller
      */
     public function edit(Post $post): View
     {
-        return \view('post.edit', ['post' => $post]);
+        $themes = Theme::all();
+        return \view('post.edit', ['post' => $post, 'themes' => $themes]);
     }
 
     /**

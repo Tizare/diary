@@ -1,42 +1,63 @@
 @extends('layouts.main')
 @section('content')
-  правка поста-та-та-та!
+
   <form method='post' action="{{ route('posts.update', ['post'=> $post]) }}" enctype="multipart/form-data">
       @csrf
       @method('put')
-{{--      <div class="form-group">--}}
-{{--          <label for="category_id">Категория</label>--}}
-{{--          <select id="category_id" name="category_id" class="form-control">--}}
-{{--              <option value="0">--Выбрать--</option>--}}
-{{--              @foreach($categoryList as $category)--}}
-{{--                  <option value="{{ $category->id }}" @if(in_array($category->id,--}}
-{{--                        $news->categories->pluck('id')->toArray())) selected @endif >{{ $category->title }}</option>--}}
-{{--              @endforeach--}}
-{{--          </select>--}}
-{{--      </div>--}}
-{{--      <div class="form-group">--}}
-{{--          <label for="title">Заголовок</label>--}}
-{{--          <input type="text" id="title" name="title" class="form-control" value="{{ $post->title }}">--}}
-{{--      </div>--}}
-{{--      <div class="form-group">--}}
-{{--          <label for="description">Описание</label>--}}
-{{--          <textarea id="description" name="description" class="form-control">{!! $post->description !!} </textarea>--}}
-{{--      </div>--}}
-      <div class="form-group">
-          <label for="text">Новость</label>
-          <textarea id="text" name="text" class="form-control"> {!! $post->text !!} </textarea>
+      <div class="form-block">
+          <div class="form-block-input border-line">
+              <label class="form-label" for="title">Заголовок:</label>
+              <input class ="form-input input-full" name="title" id="title" type="text" value="{{ $post->title }}">
+          </div>
+          <div class="form-block-input border-line">
+              <label class="form-label" for="mood">Настроение:</label>
+              <input class ="form-input input-full" name="mood" id="mood" type="text" value="{{ $post->mood }}">
+          </div>
+          <div class="form-block-input border-line">
+              <label class="form-label" for="health">Самочувствие:</label>
+              <input class ="form-input input-full" name="health" id="health" type="text" value="{{ $post->health }}">
+          </div>
+          <div class="form-block-group border-line">
+              <div class="form-block-input">
+                  <label class="form-label" for="year">Возраст&nbsp(полных&nbspлет):</label>
+                  <input class ="form-input input-half" name="year" id="year" type="text" value="{{ $post->year }}">
+              </div>
+              <div class="form-block-input">
+                  <label class="form-label" for="month">месяцев:</label>
+                  <input class ="form-input input-half" name="month" id="month" type="text" value="{{ $post->month }}">
+              </div>
+          </div>
+          <div class="form-block-group border-line">
+              <div class="form-block-input">
+                  <label class="form-label" for="kg">Вес&nbsp(кг):</label>
+                  <input class ="form-input input-half" name="kg" id="kg" type="text" value="{{ $post->kg }}">
+              </div>
+              <div class="form-block-input">
+                  <label class="form-label" for="gr">гр:</label>
+                  <input class ="form-input input-half" name="gr" id="gr" type="text" value="{{ $post->gr }}">
+              </div>
+          </div>
+          <div class="form-block-input border-line">
+              <label class="form-label" for="ht">Рост&nbsp(см):</label>
+              <input class ="form-input input-full" name="ht" id="ht" type="text" value="{{ $post->ht }}">
+          </div>
+          <div class="form-block-input border-line">
+              <label class="form-label" for="theme">Тема:</label>
+              <select id="theme" name="theme" class="form-input input-full ">
+                  @foreach($themes as $theme)
+                      <option @if(old('theme') === $theme) selected
+                              @elseif($post->theme === $theme) selected
+                              @endif value="{{ $theme }}">{{ $theme }}</option>
+                  @endforeach
+              </select>
+          </div>
+          <div class="form-block-input">
+              <label class="form-label" for="text">Текст:</label>
+              <textarea class ="form-input" name="text" id="text" type="text" rows="5"> {!! $post->text !!}</textarea>
+          </div>
       </div>
-      <div class="form-group">
-          <label for="kg">Килограмм</label>
-          <textarea id="kg" name="kg" class="form-control">{!! $post->kg !!} </textarea>
-      </div>
-      <div class="form-group">
-          <label for="gr">Грамм</label>
-          <textarea id="gr" name="gr" class="form-control">{!! $post->gr !!} </textarea>
-      </div>
-
-      <br>
-      <button type="submit" class="btn btn-success">Сохранить</button>
+      <button type="submit" class="post-button">Сохранить</button>
   </form>
-    @dd($post)
+
+
 @endsection

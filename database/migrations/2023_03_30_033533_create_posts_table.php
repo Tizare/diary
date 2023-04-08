@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->string('title', 190)->nullable();
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->text('text');
             $table->string('health')->nullable();
             $table->string('mood')->nullable();

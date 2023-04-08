@@ -18,9 +18,9 @@ class PostsSeeder extends Seeder
     private function getData(): array
     {
         $data = [];
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $data[] = [
-                'user_id' => '3',
+                'user_id' => '2',
                 'title' => \fake()->jobTitle(),
                 'description' => \fake()->text(100),
                 'text' => \fake()->text(400),
