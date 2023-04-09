@@ -11,7 +11,7 @@ class UploadFileService
 {
     public function uploadImage(UploadedFile $file): string
     {
-        $path = $file->storeAs('avatars', $file->hashName(), 'public');
+        $path = $file->storeAs('photos', $file->hashName(), 'public');
         if ($path === false) {
             throw new UploadException('не удалось загрузить файл');
         }

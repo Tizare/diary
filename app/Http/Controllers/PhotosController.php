@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Photos\CreateRequest;
+use App\Models\Photo;
+use App\Models\User;
+use App\Services\UploadFileService;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class PhotosController extends Controller
@@ -17,17 +22,26 @@ class PhotosController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(User $user): View
     {
-        //
+        return \view('photo.create', ['user' => $user]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request, User $user,
+                          UploadFileService $uploadFileService)
     {
-        //
+        $photo = new Photo($request->validated());
+
+        $photo['user_id'] = $user->id;
+        $photo['url'] = $uploadFileService->uploadImage($request->file('image'));
+        if($photo->save()) {
+            return \redirect()->route('album', ['id'=> $user->id])->with('success');
+        }
+
+        return \back()->with('error', 'вклеить фото не получилось');
     }
 
     /**

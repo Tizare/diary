@@ -26,7 +26,7 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['requited', 'int'],
+            'user_id' => [ 'int'],
             'title' => ['string', 'min:2', 'max:190', 'nullable'],
             'description' => ['string', 'min:2', 'max:255', 'nullable'],
             'text' => ['required', 'min:5'],

@@ -3,7 +3,8 @@
     <main>
         <section class="about">
             <div class="about-photo">
-                <img src="{{ asset('assets\img\avatar.jpg') }}" alt="">
+                <img src="@if($user[0]->avatar) {{ Storage::disk('public')->url($user[0]->avatar) }}
+                @else {{ asset('assets\img\avatar.jpg') }} @endif" alt="">
             </div>
             <div class="about-info">
                 <h1>{{ $user[0]->name }} {{ $user[0]->surname }}</h1>
@@ -26,12 +27,11 @@
             @if(Auth::user() && Auth::user()->id == $user[0]->id)
             <div class="post-create">
                 <a href="{{ route('posts.create', ['diary' => $user[0]->id]) }}" class="post-button">создать новый пост</a>
-                <a href="" class="post-button">вклеить фото</a>
+                <a href="{{ route('photos.create', ['diary' => $user[0]->id]) }}" class="post-button">вклеить фото</a>
             </div>
             @endif
             <div class="post-posts">
                    @forelse($diary as $post)
-{{--                       @dd($post)--}}
                     <div class="block">
                         <div class="block-bant block-bant-{{ $post->theme }}">
                         </div>

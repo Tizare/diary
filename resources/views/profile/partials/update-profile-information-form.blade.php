@@ -93,8 +93,8 @@
         </div>
 
         <div class="form-group">
-            <label for="avatar">Изображение</label>
-            <input type="file" id="avatar" name="avatar" class="form-control" >
+            <label for="image">Изображение</label>
+            <input type="file" id="image" name="image" class="form-control" >
         </div>
 
 

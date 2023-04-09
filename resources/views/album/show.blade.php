@@ -12,12 +12,10 @@
 </head>
 <body>
 <div class="wrapper">
-{{--    @dd($album[0])--}}
     <div class="top album-back album-back-@if($album[0]){{ $album[0]->user->theme }}@else beige @endif ">
         <div class="center">
             <x-header></x-header>
             @forelse($album as $photo)
-{{--                @dd($photo->user->theme)--}}
             <div class="card align">
                 <div class="card-main">
                     <div class="align">
@@ -31,11 +29,11 @@
                     <div class="card-block">
                         <div class="card-background card-background-{{ $photo->user->theme }}"></div>
                         <div class="card-sticker align">
-                            {{ Str::limit($photo->created_at, 10) }}
+                            {{ goodDate($photo->created_at) }} г.
                             <div class="card-sticker-background card-sticker-background-{{ $photo->user->theme }}"></div>
                         </div>
                         <div class="card-image">
-                            <img src="{{ $photo->url }}" alt="">
+                            <img src="{{ Storage::disk('public')->url($photo->url) }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -81,6 +79,11 @@
 
     </div>
 </div>
-
+@php
+function goodDate(string $string): string
+{
+    return mb_substr($string, 8, 2) . '.' . mb_substr($string, 5, 2) . '.' . mb_substr($string, 0, 4);
+}
+@endphp
 </body>
 </html>

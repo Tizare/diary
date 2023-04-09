@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\DiaryController;
+use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Photo;
@@ -22,11 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('ski', function () {
-    return view('ski');
-});
+})->name('welcome');
 
 Route::get('/diary/{id}', [DiaryController::class, 'show'])->name('diary');
 Route::get('/album/{id}', [AlbumController::class, 'show'])->name('album');
@@ -36,6 +33,13 @@ Route::resource('diary.posts', PostsController::class)->middleware(['auth', 'ver
     'update' => 'posts.update',
     'create' => 'posts.create',
     'store' => 'posts.store',
+]);
+
+Route::resource('diary.photos', PhotosController::class)->middleware(['auth', 'verified'])->shallow()->names([
+    'edit' => 'photos.edit',
+    'update' => 'photos.update',
+    'create' => 'photos.create',
+    'store' => 'photos.store',
 ]);
 
 Route::get('/album', [AlbumController::class, 'index']);
@@ -51,8 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
+//Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+//    \UniSharp\LaravelFilemanager\Lfm::routes();
+//});
 
 require __DIR__.'/auth.php';

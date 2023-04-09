@@ -36,8 +36,8 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        if($request->hasFile('avatar')) {
-            $request->user()->avatar = $uploadFileService->uploadImage($request->file('avatar'));
+        if($request->hasFile('image')) {
+            $request->user()->avatar = $uploadFileService->uploadImage($request->file('image'));
         }
 
         $request->user()->save();

@@ -75,7 +75,5 @@
     </script>
     <link href="{{ asset('assets\css\editor.css') }}" rel="stylesheet">
 @endsection
-@push('js')
 
-@endpush
 
