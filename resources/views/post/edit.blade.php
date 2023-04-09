@@ -5,10 +5,10 @@
       @csrf
       @method('put')
       <div class="form-block">
-          <div class="form-block-input border-line">
-              <label class="form-label" for="title">Заголовок:</label>
-              <input class ="form-input input-full" name="title" id="title" type="text" value="{{ $post->title }}">
-          </div>
+{{--          <div class="form-block-input border-line">--}}
+{{--              <label class="form-label" for="title">Заголовок:</label>--}}
+{{--              <input class ="form-input input-full" name="title" id="title" type="text" value="{{ $post->title }}">--}}
+{{--          </div>--}}
           <div class="form-block-input border-line">
               <label class="form-label" for="mood">Настроение:</label>
               <input class ="form-input input-full" name="mood" id="mood" type="text" value="{{ $post->mood }}">
@@ -52,12 +52,25 @@
               </select>
           </div>
           <div class="form-block-input">
-              <label class="form-label" for="text">Текст:</label>
+              <label class="form-label  label-editor" for="text">Текст:</label>
               <textarea class ="form-input" name="text" id="text" type="text" rows="5"> {!! $post->text !!}</textarea>
           </div>
       </div>
+
       <button type="submit" class="post-button">Сохранить</button>
   </form>
-
-
+  <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+  <script>
+      var options = {
+          filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+          filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+          filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+          filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+      };
+  </script>
+  <script>
+      CKEDITOR.replace('text', options);
+  </script>
+  <link href="{{ asset('assets\css\editor.css') }}" rel="stylesheet">
 @endsection
+

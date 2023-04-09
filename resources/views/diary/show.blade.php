@@ -36,7 +36,7 @@
                         <div class="block-bant block-bant-{{ $post->theme }}">
                         </div>
                         <div class="block-card {{ $post->theme }}">
-                            <div class="block-card-text"><p>{{ $post->text }}</p>
+                            <div class="block-card-text"><p>{!! $post->text !!}</p>
                             </div>
                             <div class="block-card-bottom block-card-bottom-{{ $post->theme }}">
                                 <div class="block-card-bottom-param">

@@ -1,0 +1,36 @@
+.cke_chrome {
+    border: none;
+}
+.cke_top {
+    border-bottom: none;
+    background: transparent;
+}
+div#cke_text {
+    display: flex;
+    width: 100%;
+}
+
+.cke_inner {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    width: 100%;
+}
+
+span#cke_30 {
+    display: none;
+}
+
+span#cke_32 {
+    display: none;
+}
+
+.cke_bottom {
+    border-top: none;
+    background: transparent;
+}
+
+.cke_wysiwyg_frame, .cke_wysiwyg_div {
+    background-color: transparent;
+}
+

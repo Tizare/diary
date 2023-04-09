@@ -5,10 +5,10 @@
     <form method='post' action="{{ route('posts.store', ['diary' => $user]) }}" enctype="multipart/form-data">
         @csrf
         <div class="form-block">
-            <div class="form-block-input border-line">
-                <label class="form-label" for="title">Заголовок:</label>
-                <input class ="form-input input-full" name="title" id="title" type="text" value="{{ old('title') }}">
-            </div>
+{{--            <div class="form-block-input border-line">--}}
+{{--                <label class="form-label" for="title">Заголовок:</label>--}}
+{{--                <input class ="form-input input-full" name="title" id="title" type="text" value="{{ old('title') }}">--}}
+{{--            </div>--}}
             <div class="form-block-input border-line">
                 <label class="form-label" for="mood">Настроение:</label>
                 <input class ="form-input input-full" name="mood" id="mood" type="text" value="{{ old('mood') }}">
@@ -52,48 +52,16 @@
                 </select>
             </div>
             <div class="form-block-input">
-                <label class="form-label" for="text">Текст:</label>
+                <label class="form-label label-editor" for="text">Текст:</label>
                 <textarea class ="form-input" name="text" id="text" type="text" rows="5"> {!! old('text') !!}</textarea>
             </div>
         </div>
 
-
-
-
-
-
-
-{{--        <div class="form-group">--}}
-{{--            <label for="text">Новость</label>--}}
-{{--            <textarea id="text" name="text" class="form-control @error('text') is-invalid @enderror"> {{ old('text') }} </textarea>--}}
-{{--        </div>--}}
-{{--        @error('text')@enderror--}}
-{{--        <div class="form-group">--}}
-{{--            <label for="kg">Килограмм</label>--}}
-{{--            <input id="kg" name="kg" class="form-control">{{ old('kg') }} </input>--}}
-{{--        </div>--}}
-{{--        <div class="form-group">--}}
-{{--            <label for="gr">Грамм</label>--}}
-{{--            <input id="gr" name="gr" class="form-control">{{ old('gr') }} </input>--}}
-{{--        </div>--}}
-{{--        <div class="form-group">--}}
-{{--            <label for="theme">Статус</label>--}}
-{{--            <select id="theme" name="theme" class="form-control ">--}}
-{{--                @foreach($themes as $theme)--}}
-{{--                    <option @if(old('theme') === $theme) selected--}}
-{{--                            @elseif($user->theme === $theme) selected--}}
-{{--                            @endif value="{{ $theme }}">{{ $theme }}</option>--}}
-{{--                @endforeach--}}
-{{--            </select>--}}
-{{--        </div>--}}
-
         <br>
         <button type="submit" class="post-button">Сохранить</button>
-    </form>
 
-@endsection
-@push('js')
-    <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+    </form>
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script>
         var options = {
             filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
@@ -105,5 +73,9 @@
     <script>
         CKEDITOR.replace('text', options);
     </script>
+    <link href="{{ asset('assets\css\editor.css') }}" rel="stylesheet">
+@endsection
+@push('js')
+
 @endpush
 
