@@ -32,7 +32,7 @@
                             {{ goodDate($photo->created_at) }} г.
                             <div class="card-sticker-background card-sticker-background-{{ $photo->user->theme }}"></div>
                         </div>
-                        <div class="card-image">
+                        <div class="card-image @if($photo->position) vertical @else horizontal @endif ">
                             <img src="{{ Storage::disk('public')->url($photo->url) }}" alt="">
                         </div>
                     </div>
