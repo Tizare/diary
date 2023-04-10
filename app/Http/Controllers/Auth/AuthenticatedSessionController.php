@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('diary', ['id' => Auth::user()->id]);
+        return redirect()->route('diary', ['user' => Auth::user()]);
     }
 
     /**

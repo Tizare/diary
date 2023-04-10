@@ -3,31 +3,31 @@
     <main>
         <section class="about">
             <div class="about-photo">
-                <img src="@if($user[0]->avatar) {{ Storage::disk('public')->url($user[0]->avatar) }}
+                <img src="@if($user->avatar) {{ Storage::disk('public')->url($user->avatar) }}
                 @else {{ asset('assets\img\avatar.jpg') }} @endif" alt="">
             </div>
             <div class="about-info">
-                <h1>{{ $user[0]->name }} {{ $user[0]->surname }}</h1>
-                <div class="about-status"> @if($user[0]->waiting)"в ожидании чуда"
+                <h1>{{ $user->name }} {{ $user->surname }}</h1>
+                <div class="about-status"> @if($user->waiting)"в ожидании чуда"
                     @else"чудо появилось на свет"@endif</div>
-                @if($user[0]->city)<p>{{ $user[0]->city }}</p>@endif
-                @if($user[0]->age)<p>{{$user[0]->age}}
-                    @if(substr($user[0]->age, -1) == 1) год
-                    @elseif(substr($user[0]->age, -1) > 1 && substr($user[0]->age, -1) < 5) года
+                @if($user->city)<p>{{ $user->city }}</p>@endif
+                @if($user->age)<p>{{$user->age}}
+                    @if(substr($user->age, -1) == 1) год
+                    @elseif(substr($user->age, -1) > 1 && substr($user->age, -1) < 5) года
                     @else лет</p>@endif
                 @endif
-                @if($user[0]->about)<p class="about-about">{{$user[0]->about}}</p>@endif
+                @if($user->about)<p class="about-about">{{$user->about}}</p>@endif
 
-                <div class="about-album-button"><a href="{{ route('album', ['id' => $user[0]->id]) }}" class="post-button">открыть альбом</a></div>
+                <div class="about-album-button"><a href="{{ route('album', ['id' => $user->id]) }}" class="post-button">открыть альбом</a></div>
             </div>
 
         </section>
 
         <section class="post align">
-            @if(Auth::user() && Auth::user()->id == $user[0]->id)
+            @if(Auth::user() && Auth::user()->id == $user->id)
             <div class="post-create">
-                <a href="{{ route('posts.create', ['diary' => $user[0]->id]) }}" class="post-button">создать новый пост</a>
-                <a href="{{ route('photos.create', ['diary' => $user[0]->id]) }}" class="post-button">вклеить фото</a>
+                <a href="{{ route('posts.create', ['diary' => $user->id]) }}" class="post-button">создать новый пост</a>
+                <a href="{{ route('photos.create', ['diary' => $user->id]) }}" class="post-button">вклеить фото</a>
             </div>
             @endif
             <div class="post-posts">
@@ -65,7 +65,7 @@
                                             @endif
                                         @endif
                                     </div>
-                                    @if(Auth::user() && Auth::user()->id == $user[0]->id)
+                                    @if(Auth::user() && Auth::user()->id == $user->id)
                                     <div class="edit"><a href="{{ route('posts.edit', ['post' => $post->id]) }}"></a></div>
                                     @endif
                                 </div>

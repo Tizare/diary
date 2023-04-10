@@ -1,6 +1,6 @@
 <header class="align" id="top">
     <div class="logo">
-        <a href="@if(Auth::user()) {{ route('diary', ['id' => Auth::user()->id]) }}
+        <a href="@if(Auth::user()) {{ route('diary', ['user' => Auth::user()]) }}
         @else {{ route('welcome') }} @endif"><img src="{{ asset('assets\img\logo.png') }}" alt="#"></a>
     </div>
     @if (Route::has('login'))

@@ -33,7 +33,7 @@ class PostsController extends Controller
         $post["user_id"] = $user->id;
 
         if ($post->save()) {
-            return \redirect()->route('diary', ['id' => $post->user_id])->with('success');
+            return \redirect()->route('diary', ['user' => $user])->with('success');
         }
 
         return \back()->with('error', 'создать пост не получилось');
@@ -64,7 +64,7 @@ class PostsController extends Controller
         $post = $post->fill($request->validated());
 
         if($post->save()) {
-            return \redirect()->route('diary', ['id' => $post->user_id])->with('success');
+            return \redirect()->route('diary', ['user' => $post->user_id])->with('success');
         }
 
         return \back()->with('error', 'не получилось');

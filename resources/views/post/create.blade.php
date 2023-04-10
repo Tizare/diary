@@ -2,7 +2,7 @@
 @section('content')
 {{--    @dd($user->theme)--}}
     <x-errors></x-errors>
-    <form method='post' action="{{ route('posts.store', ['diary' => $user]) }}" enctype="multipart/form-data">
+    <form method='post' action="{{ route('posts.store', ['diary' => Auth::user()->id ]) }}" enctype="multipart/form-data">
         @csrf
         <div class="form-block">
 {{--            <div class="form-block-input border-line">--}}

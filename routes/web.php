@@ -21,13 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//})->name('welcome');
-
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
-Route::get('/diary/{id}', [DiaryController::class, 'show'])->name('diary');
+Route::get('/diary/{user}', [DiaryController::class, 'show'])->name('diary');
 Route::get('/album/{id}', [AlbumController::class, 'show'])->name('album');
 
 Route::resource('diary.posts', PostsController::class)->middleware(['auth', 'verified'])->shallow()->names([
@@ -57,8 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-//    \UniSharp\LaravelFilemanager\Lfm::routes();
-//});
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 require __DIR__.'/auth.php';
