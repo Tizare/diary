@@ -500,8 +500,8 @@ footer img {
 }
 
 .card-image {
-    max-height: 600px;
-    max-width: 400px;
+    max-height: 500px;
+    max-width: 300px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
