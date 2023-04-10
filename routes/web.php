@@ -5,9 +5,9 @@ use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Photo;
-use App\Models\Post;
-use App\Models\User;
+use App\Http\Controllers\WelcomeController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//})->name('welcome');
+
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/diary/{id}', [DiaryController::class, 'show'])->name('diary');
 Route::get('/album/{id}', [AlbumController::class, 'show'])->name('album');

@@ -87,7 +87,7 @@
         </section>
     </main>
 
-    <footer class="align">
+    <footer class="diary-footer align">
         <img src="{{ asset('assets\img\slash.png') }}" alt="">
         <div><a href="#top">вверх</a></div>
     </footer>
