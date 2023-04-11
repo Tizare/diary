@@ -762,6 +762,14 @@ form {
     padding: 8px;
 }
 
+.form-radio {
+    margin-right: 25px;
+}
+
+.form-radio-label {
+    margin-right: 15px;
+}
+
 .form-container {
     width: 100%;
     padding: 0 30px;
@@ -792,6 +800,9 @@ form {
 .form-block-input {
     display: flex;
 }
+.form-block-radio {
+    flex-wrap: wrap;
+}
 .form-block-group {
     display: flex;
     flex-wrap: wrap;
@@ -799,6 +810,19 @@ form {
 .form-label {
     padding: 5px;
     color: #eda367;
+}
+
+.form-image {
+    line-height: 35px;
+}
+
+.form-block-photo-show {
+    display: flex;
+    justify-content: center;
+}
+
+.form-block-photo-show img {
+    max-width: 95%;
 }
 
 .label-editor {

@@ -41,10 +41,10 @@ final class PhotosQueryBuilders extends QueryBuilder
 
     /**
      * @param int $id
-     * @return LengthAwarePaginator
+     * @return Collection
      */
-    public function getPhotosByUserId (int $id): LengthAwarePaginator
+    public function getPhotosByUserId (int $id): Collection
     {
-        return $this->model->with('users')->where("users_id", $id)->paginate(1);
+        return $this->model->where("user_id", $id)->get();
     }
 }

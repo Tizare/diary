@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Photos\CreateRequest;
+use App\Http\Requests\Photos\EditRequest;
 use App\Models\Photo;
 use App\Models\User;
+use App\QueryBuilders\PhotosQueryBuilders;
 use App\Services\UploadFileService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class PhotosController extends Controller
@@ -16,7 +19,7 @@ class PhotosController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -47,25 +50,33 @@ class PhotosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id, PhotosQueryBuilders $photosQueryBuilders): View
     {
-        //
+        $photos = $photosQueryBuilders->getPhotosByUserId($id);
+        return \view('photos', ['photos' => $photos]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Photo $photo): View
     {
-        //
+        return \view('photo.edit', ['photo' => $photo]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EditRequest $request, Photo $photo): RedirectResponse
     {
-        //
+//        dd($photo);
+        $photo = $photo->fill($request->validated());
+
+        if($photo->save()) {
+            return \redirect()->route('photos', ['user_id' => $photo->user_id]);
+        }
+
+        return \back()->with('error', 'не получилось');
     }
 
     /**

@@ -25,6 +25,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/diary/{user}', [DiaryController::class, 'show'])->name('diary');
 Route::get('/album/{id}', [AlbumController::class, 'show'])->name('album');
+Route::get('/photos/{user_id}', [PhotosController::class, 'show'])->middleware(['auth', 'verified'])->name('photos');
 
 Route::resource('diary.posts', PostsController::class)->middleware(['auth', 'verified'])->shallow()->names([
     'edit' => 'posts.edit',

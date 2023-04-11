@@ -11,7 +11,7 @@ class EditRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,8 @@ class EditRequest extends FormRequest
     {
         return [
             'user_id' => ['int'],
-            'title' => ['string', 'min:2', 'max:190', 'nullable'],
-            'desc' => ['string', 'min:2', 'max:255', 'nullable'],
+            'title' => ['string', 'min:2', 'max:250', 'nullable'],
+            'desc' => ['string', 'min:2', 'max:5000', 'nullable'],
             'url' => ['string'],
             'position' => ['boolean', 'required'],
         ];
