@@ -39,6 +39,7 @@ Route::resource('diary.photos', PhotosController::class)->middleware(['auth', 'v
     'update' => 'photos.update',
     'create' => 'photos.create',
     'store' => 'photos.store',
+    'delete' => 'photos.destroy',
 ]);
 
 Route::get('/album', [AlbumController::class, 'index']);

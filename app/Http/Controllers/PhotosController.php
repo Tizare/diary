@@ -69,7 +69,6 @@ class PhotosController extends Controller
      */
     public function update(EditRequest $request, Photo $photo): RedirectResponse
     {
-//        dd($photo);
         $photo = $photo->fill($request->validated());
 
         if($photo->save()) {
@@ -82,8 +81,10 @@ class PhotosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Photo $photo): RedirectResponse
     {
-        //
+        $photo->delete();
+
+        return \back();
     }
 }
