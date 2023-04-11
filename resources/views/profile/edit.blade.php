@@ -1,29 +1,41 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+    <div class="wrapper">
+        <div class="top center">
+            <div class="profile-container">
+                <div class="profile-block-left align">
+                    <div class="profile-avatar">
+                        <img src="@if($user->avatar) {{ Storage::disk('public')->url($user->avatar) }}
+                @else {{ asset('assets\img\avatar.jpg') }} @endif" alt="">
+                    </div>
+                    <div class="profile-password">
+                        <div class="profile-password-block">
+                            <div class="profile-title"><b>Изменить пароль</b></div>
+                            @include('profile.partials.update-password-form')
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-block-right">
+                    <div class="profile-info">
+                        <div class="profile-info-block">
+                            <div class="profile-title"><b>Личные данные</b></div>
+                            @include('profile.partials.update-profile-information-form')
+                        </div>
+                    </div>
+                </div>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
+            </div>
+            <div class="profile-bottom">
+                <div class="profile-delete">
+                    <div class="profile-delete-block">
+                        <div class="profile-title"><b>Удаление аккаунта</b></div>
+                        <div>Внимание! При удалении аккаунта Вы больше не сможете его восстановить. Все ваши посты и фотографии будут также удалены.</div>
+                        <div class="profile-button">@include('profile.partials.delete-user-form')</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
         </div>
     </div>
+
 </x-app-layout>
+<x-footer></x-footer>

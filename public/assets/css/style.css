@@ -804,3 +804,65 @@ form {
 .label-editor {
     margin-top: 82px;
 }
+
+/*==============================PROFILE========================*/
+
+.profile-container {
+    display: flex;
+    justify-content: space-around;
+}
+.profile-block-left {
+    width: 35%;
+    padding: 15px;
+    flex-direction: column;
+}
+.profile-block-right {
+    width: 65%;
+    padding: 15px;
+    display: flex;
+}
+.profile-bottom {
+    display: flex;
+    width: 100%;
+    padding-right: 30px;
+}
+.profile-avatar {
+    display: flex;
+    max-width: 220px;
+    padding: 15px;
+    margin: 30px;
+    border: 4px dashed pink;
+    border-radius: 20px;
+}
+.profile-avatar img {
+    width: 100%;
+}
+.profile-password, .profile-delete, .profile-info {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 150px;
+    padding: 30px;
+    margin: 30px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+}
+.profile-password::before, .profile-delete::before, .profile-info::before {
+    top: -5px;
+    left: 6px;
+    position: absolute;
+    content: "";
+    width: 98%;
+    border-top: dotted 15px white;
+}
+.profile-password {
+    background-color: #b0ff8c;
+}
+.profile-delete {
+    background-color: #ff9595;
+}
+.profile-info {
+    background-color: #ffffdd;
+}
+.profile-title {
+    font-size: 20px;
+}

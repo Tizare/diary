@@ -1,9 +1,4 @@
 <section >
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            Ваши данные:
-        </h2>
-    </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
@@ -77,11 +72,15 @@
             </select>
         </div>
 
-        <div>
-            <x-input-label for="waiting" :value="__('Я беременна')" />
-            <input id="waiting" name="waiting" type="radio" value="1" @if($user->waiting) checked @endif>
-            <x-input-label for="waiting-not" :value="__('Я уже родила')" />
-            <input id="waiting-not" name="waiting" type="radio" value="0" @if(!$user->waiting) checked @endif>
+        <div class="profile-radio">
+            <div class="profile-radio-block">
+                <x-input-label for="waiting" :value="__('Я беременна')" />
+                <input class="radio-waiting" id="waiting" name="waiting" type="radio" value="1" @if($user->waiting) checked @endif>
+            </div>
+            <div class="profile-radio-block">
+                <x-input-label for="waiting-not" :value="__('Я уже родила')" />
+                <input class="radio-waiting" id="waiting-not" name="waiting" type="radio" value="0" @if(!$user->waiting) checked @endif>
+            </div>
 
         </div>
 
@@ -99,7 +98,7 @@
 
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Сохранить') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -108,7 +107,7 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                >{{ __('Сохранено.') }}</p>
             @endif
         </div>
     </form>
