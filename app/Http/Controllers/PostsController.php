@@ -42,9 +42,10 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id, PostsQueryBuilders $postsQueryBuilders): View
     {
-        //
+        $post = $postsQueryBuilders->getPostWithComments($id);
+        return \view('post.show', ['post' => $post]);
     }
 
     /**

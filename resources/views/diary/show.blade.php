@@ -68,6 +68,7 @@
                                     @if(Auth::user() && Auth::user()->id == $user->id)
                                     <div class="edit"><a href="{{ route('posts.edit', ['post' => $post->id]) }}"></a></div>
                                     @endif
+                                    <div class="show"><a href="{{ route('comments', ['post_id' => $post->id]) }}">открыть</a></div>
                                 </div>
                             </div>
                         </div>

@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Post extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    protected $table = 'posts';
+    protected $table = 'comments';
 
     protected $guarded = [
         'id',
@@ -26,10 +25,10 @@ class Post extends Model
     }
 
     /**
-     * @return HasMany
+     * @return BelongsTo
      */
-    public function comments(): HasMany
+    public function post(): BelongsTo
     {
-        return $this->hasMany(Comment::class)->with('user');
+        return $this->belongsTo(Post::class);
     }
 }

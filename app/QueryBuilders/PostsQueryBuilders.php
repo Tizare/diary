@@ -51,4 +51,9 @@ final class PostsQueryBuilders extends QueryBuilder
     {
         return $this->model->with('user')->where("users_id", $id)->paginate($quantity);
     }
+
+    public function getPostWithComments (int $post_id): Collection
+    {
+        return $this->model->where('id', $post_id)->with('comments')->with('user')->get();
+    }
 }

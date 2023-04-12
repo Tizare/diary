@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,16 +24,23 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/diary/{user}', [DiaryController::class, 'show'])->name('diary');
 Route::get('/album/{id}', [AlbumController::class, 'show'])->name('album');
-Route::get('/photos/{user_id}', [PhotosController::class, 'show'])->middleware(['auth', 'verified'])->name('photos');
+Route::get('/photos/{user_id}', [PhotosController::class, 'show'])
+    ->middleware(['auth', 'verified'])->name('photos');
 
-Route::resource('diary.posts', PostsController::class)->middleware(['auth', 'verified'])->shallow()->names([
+Route::resource('diary.posts', PostsController::class)
+    ->middleware(['auth', 'verified'])->shallow()->names([
     'edit' => 'posts.edit',
     'update' => 'posts.update',
     'create' => 'posts.create',
     'store' => 'posts.store',
 ]);
 
-Route::resource('diary.photos', PhotosController::class)->middleware(['auth', 'verified'])->shallow()->names([
+Route::get('/comments/{post_id}', [PostsController::class, 'show'])->name('comments');
+Route::post('/comment/{user}/{post}', [CommentsController::class, 'store'])->middleware('auth')->name('comment.store');
+
+
+Route::resource('diary.photos', PhotosController::class)
+    ->middleware(['auth', 'verified'])->shallow()->names([
     'edit' => 'photos.edit',
     'update' => 'photos.update',
     'create' => 'photos.create',
@@ -42,12 +48,6 @@ Route::resource('diary.photos', PhotosController::class)->middleware(['auth', 'v
     'delete' => 'photos.destroy',
 ]);
 
-Route::get('/album', [AlbumController::class, 'index']);
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

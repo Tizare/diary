@@ -1,0 +1,12 @@
+.cke_bottom {
+    border-top: none;
+    background: transparent;
+}
+
+#cke_26, #cke_27, #cke_30, #cke_32, #cke_44  {
+    display: none;
+}
+
+div#cke_comment-write {
+    width: 100%;
+}
