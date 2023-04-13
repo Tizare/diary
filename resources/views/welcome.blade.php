@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <main class="welcome-main align">
-        <h2>Добро пожаловать в Твой дневник!</h2>
+        <h2>Добро пожаловать в&nbsp;Твой дневник!</h2>
         <div class="main-block">
             <div class="main-card">
                 <h4>Новенькие</h4>

@@ -4,7 +4,11 @@
         <section class="post align">
             <div class="post-posts">
                 <div class="block">
-                    <div class="block-bant block-bant-{{ $post[0]->theme }}">
+                    <div class="block-user block-user-{{ $post[0]->theme }}">
+                        <div><a href="{{ route('diary', ['user' => $post[0]->user]) }}">{{ $post[0]->user->name }} {{ $post[0]->user->surname }}</a></div>
+                    </div>
+
+                    <div class="comment-bant block-bant-{{ $post[0]->theme }}">
                     </div>
                     <div class="block-card {{ $post[0]->theme }}">
                         <div class="block-card-text"><p>{!! $post[0]->text !!}</p>
@@ -61,7 +65,6 @@
                         </form>
                     </div>
                 </label>
-
             </div>
         @endif
         <section class="comments">

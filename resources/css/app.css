@@ -115,6 +115,10 @@ html, body {
     background-color: #b0ff8c;
     min-width: 200px;
 }
+
+.profile-password-second {
+    display: none;
+}
 .profile-delete {
     background-color: #ff9595;
 }
@@ -297,4 +301,37 @@ label span {
     -webkit-transition: opacity 0.3s;
     transition: opacity 0.3s;
     background-color: transparent;
+}
+
+.post-button:hover {
+    opacity: 1;
+}
+
+@media(max-width: 700px) {
+    .main-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-footer div {
+        text-align: center;
+    }
+    .profile-password-first {
+        display: none;
+    }
+    .profile-password-second {
+        display: flex;
+    }
+
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-block-left, .profile-block-right {
+        width: 100%;
+    }
+    .profile-bottom {
+        padding-right: 0px;
+    }
 }

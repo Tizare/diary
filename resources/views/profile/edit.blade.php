@@ -7,7 +7,7 @@
                         <img src="@if($user->avatar) {{ Storage::disk('public')->url($user->avatar) }}
                 @else {{ asset('assets\img\avatar.jpg') }} @endif" alt="">
                     </div>
-                    <div class="profile-password">
+                    <div class="profile-password profile-password-first">
                         <div class="profile-password-block">
                             <div class="profile-title"><b>Изменить пароль</b></div>
                             @include('profile.partials.update-password-form')
@@ -22,7 +22,14 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="profile-block-left align">
+                    <div class="profile-password profile-password-second">
+                        <div class="profile-password-block">
+                            <div class="profile-title"><b>Изменить пароль</b></div>
+                            @include('profile.partials.update-password-form')
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="profile-bottom">
                 <div class="profile-delete">

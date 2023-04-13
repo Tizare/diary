@@ -6,6 +6,8 @@
     @if (Route::has('login'))
         <div class="enter">
             @auth
+                <a href="{{ route('welcome') }}" class="enter-link">Главная</a>
+                <a href="{{ route('diary', ['user' => Auth::user()]) }}" class="enter-link">Дневник</a>
                 <a href="{{ url('/profile') }}" class="enter-link">Профиль</a>
             @else
                 <a href="{{ route('login') }}" class="enter-link">Войти</a>

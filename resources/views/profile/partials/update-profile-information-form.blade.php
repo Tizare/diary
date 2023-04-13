@@ -18,21 +18,21 @@
         <div>
             <x-input-label for="surname" :value="__('Фамилия')" />
             <x-text-input id="surname" name="surname" type="text" class="mt-1 block w-full"
-                          :value="old('surname', $user->surname)" required autofocus autocomplete="surname" />
+                          :value="old('surname', $user->surname)"  autofocus autocomplete="surname" />
             <x-input-error class="mt-2" :messages="$errors->get('surname')" />
         </div>
 
         <div>
             <x-input-label for="age" :value="__('Возраст')" />
             <x-text-input id="age" name="age" type="text" class="mt-1 block w-full"
-                          :value="old('age', $user->age)" required autofocus autocomplete="age" />
+                          :value="old('age', $user->age)"  autofocus autocomplete="age" />
             <x-input-error class="mt-2" :messages="$errors->get('age')" />
         </div>
 
         <div>
             <x-input-label for="city" :value="__('Город')" />
             <x-text-input id="city" name="city" type="text" class="mt-1 block w-full"
-                          :value="old('city', $user->city)" required autofocus autocomplete="city" />
+                          :value="old('city', $user->city)"  autofocus autocomplete="city" />
             <x-input-error class="mt-2" :messages="$errors->get('city')" />
         </div>
 
@@ -87,7 +87,7 @@
         <div>
             <x-input-label for="about" :value="__('О себе')" />
             <x-text-input id="about" name="about" type="text" class="mt-1 block w-full"
-                          :value="old('city', $user->about)" required autofocus autocomplete="about" />
+                          :value="old('city', $user->about)"  autofocus autocomplete="about" />
             <x-input-error class="mt-2" :messages="$errors->get('about')" />
         </div>
 
