@@ -38,6 +38,9 @@
                         <div class="block-card {{ $post->theme }}">
                             <div class="block-card-text"><p>{!! $post->text !!}</p>
                             </div>
+                            <div class="show"><a href="{{ route('comments', ['post_id' => $post->id]) }}">
+                                    комментарии ({{ $post->comments->count() }})</a>
+                            </div>
                             <div class="block-card-bottom block-card-bottom-{{ $post->theme }}">
                                 <div class="block-card-bottom-param">
                                     <div class="block-card-bottom-info"><b>Настроение: </b> @if($post->mood) {{ $post->mood }}@endif</div>
@@ -68,7 +71,6 @@
                                     @if(Auth::user() && Auth::user()->id == $user->id)
                                     <div class="edit"><a href="{{ route('posts.edit', ['post' => $post->id]) }}"></a></div>
                                     @endif
-                                    <div class="show"><a href="{{ route('comments', ['post_id' => $post->id]) }}">открыть</a></div>
                                 </div>
                             </div>
                         </div>

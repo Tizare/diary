@@ -417,6 +417,17 @@ a.enter-link:hover {
     box-shadow: 10px 10px 30px rgba(225, 204, 129, 0.2);
 }
 
+.show {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: -webkit-fill-available;
+}
+
+.show a {
+    font-size: 12px;
+}
+
 .diary-footer {
     height: 70px;
     -webkit-box-pack: end;
@@ -431,6 +442,8 @@ a.enter-link:hover {
 .diary-footer img {
     width: 50%;
 }
+
+/*===========================ALBUM=================================*/
 
 .album-back {
     background-repeat: no-repeat;

@@ -27,6 +27,7 @@ final class DiaryQueryBuilders extends QueryBuilder
 
     public function getPostsByUserId (int $id, int $quantity = 3): LengthAwarePaginator
     {
-        return $this->model->where("user_id", $id)->orderByDesc('id')->paginate($quantity);
+        return $this->model->where("user_id", $id)->orderByDesc('id')->with('comments')->paginate($quantity);
     }
+
 }
