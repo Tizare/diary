@@ -5,7 +5,10 @@
             <div class="post-posts">
                 <div class="block">
                     <div class="block-user block-user-{{ $post[0]->theme }}">
-                        <div><a href="{{ route('diary', ['user' => $post[0]->user]) }}">{{ $post[0]->user->name }} {{ $post[0]->user->surname }}</a></div>
+                        <div>
+                            <a href="{{ route('diary', ['user' => $post[0]->user]) }}">
+                                {{ $post[0]->user->name }} {{ $post[0]->user->surname }}</a>
+                        </div>
                     </div>
 
                     <div class="comment-bant block-bant-{{ $post[0]->theme }}">
@@ -15,13 +18,19 @@
                         </div>
                         <div class="block-card-bottom block-card-bottom-{{ $post[0]->theme }}">
                             <div class="block-card-bottom-param">
-                                <div class="block-card-bottom-info"><b>Настроение: </b> @if($post[0]->mood) {{ $post[0]->mood }}@endif</div>
-                                <div class="block-card-bottom-info"><b>Самочувствие: </b> @if($post[0]->health) {{ $post[0]->health }}@endif</div>
+                                <div class="block-card-bottom-info">
+                                    <b>Настроение: </b> @if($post[0]->mood) {{ $post[0]->mood }}@endif
+                                </div>
+                                <div class="block-card-bottom-info">
+                                    <b>Самочувствие: </b> @if($post[0]->health) {{ $post[0]->health }}@endif
+                                </div>
                             </div>
                             <div class="block-card-bottom-param">
-                                <div class="block-card-bottom-info"><b>Рост: </b> @if($post[0]->ht) {{ $post[0]->ht }} см@endif
+                                <div class="block-card-bottom-info">
+                                    <b>Рост: </b> @if($post[0]->ht) {{ $post[0]->ht }} см@endif
                                 </div>
-                                <div class="block-card-bottom-info"><b>Вес: </b> @if($post[0]->kg) {{ $post[0]->kg }} кг@endif
+                                <div class="block-card-bottom-info">
+                                    <b>Вес: </b> @if($post[0]->kg) {{ $post[0]->kg }} кг@endif
                                     @if($post[0]->gr) {{ $post[0]->gr }} г@endif
                                 </div>
                                 <div class="block-card-bottom-info"><b>Возраст: </b>
@@ -69,8 +78,9 @@
         @endif
         <section class="comments">
             @forelse($post[0]->comments as $comment)
-                <div class="comments-block comments-block-{{ $comment->user->theme }}">
-                    <div class="comments-user comment-{{ $comment->user->theme }}">
+                @if($comment->user)
+                <div class="comments-block comments-block-{{$comment->user->theme}}">
+                    <div class="comments-user comment-{{$comment->user->theme}}">
                         <div class="comments-user-avatar">
                             <a href="{{ route('diary', ['user' => $comment->user]) }}">
                                 <img src=" @if($comment->user->avatar) {{ Storage::disk('public')->url($comment->user->avatar) }}
@@ -84,7 +94,10 @@
                         <div class="comments-user-data">@if($comment->user->waiting) в процессе @else уже @endif</div>
                     </div>
                     <div class="comments-text">
-                        {!! $comment->comment !!}
+                        <div class="comments-date">
+                            {!! goodDate($comment->created_at) !!} г.
+                        </div>
+                        <p>{!! $comment->comment !!}</p>
                     </div>
                     <div class="card-desc-stick card-desc-stick1"></div>
                     <div class="card-desc-stick card-desc-stick2"></div>
@@ -92,6 +105,27 @@
                         <img src="{{ asset('assets\img\hurt.png') }}" alt="">
                     </div>
                 </div>
+                @else
+                    <div class="comments-block comments-block-beige">
+                        <div class="comments-user comment-beige">
+                            <div class="comments-user-avatar">
+                                    <img src=" {{ asset('assets\img\avatar.jpg') }}">
+                            </div>
+                            <div class="comments-user-data">Незнакомец</div>
+                        </div>
+                        <div class="comments-text">
+                            <div class="comments-date">
+                                {!! goodDate($comment->created_at) !!} г.
+                            </div>
+                            <p>{!! $comment->comment !!}</p>
+                        </div>
+                        <div class="card-desc-stick card-desc-stick1"></div>
+                        <div class="card-desc-stick card-desc-stick2"></div>
+                        <div class="card-desc-img">
+                            <img src="{{ asset('assets\img\hurt.png') }}" alt="">
+                        </div>
+                    </div>
+                @endif
             @empty
                 <div class="comments-block comments-block-{{ $post[0]->theme }}">
                     Комментарии в процессе написания и скоро появятся, ожидайте!
@@ -123,5 +157,12 @@
         CKEDITOR.replace('comment-write', options);
     </script>
     <link href="{{ asset('assets\css\comment-editor.css') }}" rel="stylesheet">
+
+    @php
+        function goodDate(string $string): string
+        {
+            return mb_substr($string, 8, 2) . '.' . mb_substr($string, 5, 2) . '.' . mb_substr($string, 0, 4);
+        }
+    @endphp
 @endsection
 

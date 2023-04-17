@@ -35,7 +35,7 @@
                 <div class="profile-delete">
                     <div class="profile-delete-block">
                         <div class="profile-title"><b>Удаление аккаунта</b></div>
-                        <div>Внимание! При удалении аккаунта Вы больше не сможете его восстановить. Все ваши посты и фотографии будут также удалены.</div>
+                        <div>Внимание! При удалении аккаунта Вы больше не&nbsp;сможете его восстановить. Все ваши посты и&nbsp;фотографии будут также удалены.</div>
                         <div class="profile-button">@include('profile.partials.delete-user-form')</div>
                     </div>
                 </div>

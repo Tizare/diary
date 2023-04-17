@@ -36,7 +36,8 @@ Route::resource('diary.posts', PostsController::class)
 ]);
 
 Route::get('/comments/{post_id}', [PostsController::class, 'show'])->name('comments');
-Route::post('/comment/{user}/{post}', [CommentsController::class, 'store'])->middleware('auth')->name('comment.store');
+Route::post('/comment/{user}/{post}', [CommentsController::class, 'store'])
+    ->middleware('auth')->name('comment.store');
 
 
 Route::resource('diary.photos', PhotosController::class)

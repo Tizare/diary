@@ -23,21 +23,25 @@ final class UserQueryBuilders extends QueryBuilder
         return $this->model->get();
     }
 
-    public function getUserById(int $id): Collection
-    {
-        return $this->model->where('id', $id)->get();
-    }
-
+    /**
+     * @return Collection
+     */
     public function getLastUsers(): Collection
     {
         return $this->model->orderByDesc('id')->limit(2)->get();
     }
 
+    /**
+     * @return Collection
+     */
     public function getWaitingUsers(): Collection
     {
         return User::query()->where('waiting', true)->inRandomOrder()->limit(2)->get();
     }
 
+    /**
+     * @return Collection
+     */
     public function getNotWaitingUsers(): Collection
     {
         return User::query()->where('waiting', false)->inRandomOrder()->limit(2)->get();

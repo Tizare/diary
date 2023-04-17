@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\QueryBuilders\DiaryQueryBuilders;
-use App\QueryBuilders\UserQueryBuilders;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class DiaryController extends Controller

@@ -6,10 +6,6 @@
       @method('put')
       <div class="form-container">
           <div class="form-block">
-              {{--          <div class="form-block-input border-line">--}}
-              {{--              <label class="form-label" for="title">Заголовок:</label>--}}
-              {{--              <input class ="form-input input-full" name="title" id="title" type="text" value="{{ $post->title }}">--}}
-              {{--          </div>--}}
               <div class="form-block-input border-line">
                   <label class="form-label" for="mood">Настроение:</label>
                   <input class ="form-input input-full" name="mood" id="mood" type="text" value="{{ $post->mood }}">

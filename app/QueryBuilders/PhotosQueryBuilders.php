@@ -23,23 +23,6 @@ final class PhotosQueryBuilders extends QueryBuilder
     }
 
     /**
-     * @return LengthAwarePaginator
-     */
-    function getPhotosWithPagination (): LengthAwarePaginator
-    {
-        return $this->model->paginate(1);
-    }
-
-    /**
-     * @param int $id
-     * @return Collection
-     */
-    public function getPhotoById(int $id): Collection
-    {
-        return $this->model->where('id', $id)->get();
-    }
-
-    /**
      * @param int $id
      * @return Collection
      */

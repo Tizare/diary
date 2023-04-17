@@ -46,8 +46,4 @@
             filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
         };
     </script>
-{{--    <script>--}}
-{{--        CKEDITOR.replace('text', options);--}}
-{{--    </script>--}}
-{{--    <link href="{{ asset('assets\css\editor.css') }}" rel="stylesheet">--}}
 @endsection

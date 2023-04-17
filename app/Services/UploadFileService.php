@@ -9,6 +9,10 @@ use Symfony\Component\HttpFoundation\File\Exception\UploadException;
 
 class UploadFileService
 {
+    /**
+     * @param UploadedFile $file
+     * @return string
+     */
     public function uploadImage(UploadedFile $file): string
     {
         $path = $file->storeAs('photos', $file->hashName(), 'public');

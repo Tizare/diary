@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,9 +20,9 @@ class PostsSeeder extends Seeder
     private function getData(): array
     {
         $data = [];
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 9; $i++) {
             $data[] = [
-                'user_id' => '2',
+                'user_id' => '15',
                 'title' => \fake()->jobTitle(),
                 'description' => \fake()->text(100),
                 'text' => \fake()->text(400),

@@ -18,7 +18,8 @@
                 @endif
                 @if($user->about)<p class="about-about">{{$user->about}}</p>@endif
 
-                <div class="about-album-button"><a href="{{ route('album', ['id' => $user->id]) }}" class="post-button">открыть альбом</a></div>
+                <div class="about-album-button"><a href="{{ route('album', ['id' => $user->id]) }}"
+                                                   class="post-button">открыть альбом</a></div>
             </div>
 
         </section>
@@ -43,13 +44,19 @@
                             </div>
                             <div class="block-card-bottom block-card-bottom-{{ $post->theme }}">
                                 <div class="block-card-bottom-param">
-                                    <div class="block-card-bottom-info"><b>Настроение: </b> @if($post->mood) {{ $post->mood }}@endif</div>
-                                    <div class="block-card-bottom-info"><b>Самочувствие: </b> @if($post->health) {{ $post->health }}@endif</div>
+                                    <div class="block-card-bottom-info">
+                                        <b>Настроение: </b> @if($post->mood) {{ $post->mood }}@endif
+                                    </div>
+                                    <div class="block-card-bottom-info">
+                                        <b>Самочувствие: </b> @if($post->health) {{ $post->health }}@endif
+                                    </div>
                                 </div>
                                 <div class="block-card-bottom-param">
-                                    <div class="block-card-bottom-info"><b>Рост: </b> @if($post->ht) {{ $post->ht }} см@endif
+                                    <div class="block-card-bottom-info">
+                                        <b>Рост: </b> @if($post->ht) {{ $post->ht }} см@endif
                                     </div>
-                                    <div class="block-card-bottom-info"><b>Вес: </b> @if($post->kg) {{ $post->kg }} кг@endif
+                                    <div class="block-card-bottom-info">
+                                        <b>Вес: </b> @if($post->kg) {{ $post->kg }} кг@endif
                                         @if($post->gr) {{ $post->gr }} г@endif
                                     </div>
                                     <div class="block-card-bottom-info"><b>Возраст: </b>

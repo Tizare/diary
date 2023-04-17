@@ -337,6 +337,7 @@ a.enter-link:hover {
 
 .block-card {
     width: 100%;
+    min-height: 200px;
     padding: 30px 40px;
     padding-left: 20%;
     border-radius: 20px;
@@ -927,7 +928,7 @@ form {
     padding: 30px;
     margin: 20px;
     -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .comments-block-pink {
@@ -983,11 +984,26 @@ form {
 .comments-user-data {
     font-size: 12px;
     line-height: 14px;
+    text-align: center;
+}
+
+
+.comments-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.comments-date {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 .comment-check{
     display: none;
 }
+
 
 .comment-create-form {
     width: 100%;
@@ -1110,7 +1126,13 @@ form {
     }
 
     .card-sticker {
-        right: -20px;
+        right: -33px;
+        scale: 0.8;
+        top: 5px;
+    }
+
+    .comments-date {
+        scale: 0.8;
     }
 
     .card-block {
@@ -1136,6 +1158,10 @@ form {
         flex-wrap: wrap;
     }
 
+    .comments-block {
+        padding: 15px;
+    }
+
     .comments-user-avatar {
         width: 40px;
     }
@@ -1146,6 +1172,10 @@ form {
 
     .comments-user-data {
         font-size: 10px;
+    }
+
+    .comments-date {
+        scale: 0.7;
     }
 
     p {
@@ -1165,6 +1195,17 @@ form {
 
     .form-label, .form-image {
         font-size: 14px;
+    }
+    .card-sticker, .card-desc-stick {
+        scale: 0.7;
+    }
+
+    .card-desc-stick2 {
+        right: -40px;
+    }
+
+    .card-desc-stick1 {
+        left: -40px;
     }
 }
 

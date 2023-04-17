@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\QueryBuilders\AlbumQueryBuilders;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class AlbumController extends Controller

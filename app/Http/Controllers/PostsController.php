@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Enums\Theme;
@@ -10,7 +12,6 @@ use App\Models\User;
 use App\QueryBuilders\PostsQueryBuilders;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {

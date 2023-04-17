@@ -1,15 +1,10 @@
 @extends('layouts.main')
 @section('content')
-{{--    @dd($user->theme)--}}
     <x-errors></x-errors>
     <form method='post' action="{{ route('posts.store', ['diary' => Auth::user()->id ]) }}" enctype="multipart/form-data">
         @csrf
         <div class="form-container">
             <div class="form-block">
-                {{--            <div class="form-block-input border-line">--}}
-                {{--                <label class="form-label" for="title">Заголовок:</label>--}}
-                {{--                <input class ="form-input input-full" name="title" id="title" type="text" value="{{ old('title') }}">--}}
-                {{--            </div>--}}
                 <div class="form-block-input border-line">
                     <label class="form-label" for="mood">Настроение:</label>
                     <input class ="form-input input-full" name="mood" id="mood" type="text" value="{{ old('mood') }}">
@@ -63,8 +58,6 @@
             </div>
             <button type="submit" class="post-button">Сохранить</button>
         </div>
-
-
 
     </form>
     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
